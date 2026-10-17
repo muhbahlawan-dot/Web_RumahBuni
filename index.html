@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perpustakaan Nusantara — Company Profile</title>
+
+  <!-- Terapkan tema tersimpan SEBELUM halaman tampil (mencegah kedipan) -->
+  <script>
+    (function () {
+      var theme = 'dark'; // bawaan: gelap (sesuai tampilan awal)
+      try {
+        var saved = localStorage.getItem('rumahbuni-theme');
+        if (saved === 'light' || saved === 'dark') theme = saved;
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- cdn css bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <!-- icon -->
+  <link rel="shortcut icon" href="Logo rumah buni.png" type="image/x-icon">
+  <!-- cdn bootstrap icons (logo WhatsApp & Instagram) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- cdn animated css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- cdn AOS css -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* ===== TEMA: semua warna diatur lewat variabel ===== */
+    :root,
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #000000;
+      --bg-alt: #080b0e;
+      --text: #F4F0E6;
+      --muted: #C9D2D8;
+      --heading: #E2E11E;
+      --green: #5BBC4B;
+      --gold: #C9922B;
+      --card-bg: #101a23;
+      --card-border: #243442;
+      --panel-bg: #0B1B29;
+      --footer-bg: #151a1f;
+      --footer-text: #A9B4BC;
+      --footer-link: #C9D2D8;
+      --input-bg: #101a23;
+      --input-border: #2c3e4e;
+      --btn-text: #0B1B29;
+      --nav-bg: #000000;
+      --nav-border: rgba(255, 255, 255, .08);
+      --shadow: rgba(0, 0, 0, .5);
+    }
+
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #FAF7EF;
+      --bg-alt: #F1ECDD;
+      --text: #1D2A33;
+      --muted: #4A5964;
+      --heading: #8A6D00;
+      --green: #2E7D32;
+      --gold: #A6700F;
+      --card-bg: #FFFFFF;
+      --card-border: #DCD3BE;
+      --panel-bg: #FFFFFF;
+      --footer-bg: #E4DDC7;
+      --footer-text: #3F4C56;
+      --footer-link: #1D2A33;
+      --input-bg: #FFFFFF;
+      --input-border: #CFC6AE;
+      --btn-text: #FFFFFF;
+      --nav-bg: #FAF7EF;
+      --nav-border: rgba(0, 0, 0, .08);
+      --shadow: rgba(60, 45, 10, .15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      transition: background-color .35s ease, color .35s ease;
+    }
+
+    section, footer { transition: background-color .35s ease, color .35s ease; }
+
+    /* Potong overflow horizontal agar animasi AOS (fade-left/right) tidak membuat layar bergeser */
+    .sec { overflow-x: clip; background: var(--bg); padding: 80px 0; }
+    .sec-alt { background: var(--bg-alt); }
+
+    .font-serif { font-family: 'Libre Baskerville', serif; }
+    .heading { color: var(--heading); font-family: 'Libre Baskerville', serif; }
+    .c-green { color: var(--green); }
+    .c-heading { color: var(--heading); }
+    .c-muted { color: var(--muted); }
+
+    /* ===== NAVBAR ===== */
+    .site-nav {
+      background-color: var(--nav-bg);
+      border-bottom: 1px solid var(--nav-border);
+      transition: background-color .35s ease;
+      z-index: 1030;
+    }
+    .site-nav .brand-logo { width: 90px; }
+    .site-nav .nav-link { color: var(--heading); font-weight: 500; }
+    .site-nav .nav-link:hover { color: var(--green); }
+    .brand-sub { color: var(--text); }
+    .navbar-toggler { border: 0; background: var(--card-bg); border-radius: 10px; padding: .45rem .65rem; }
+    .navbar-toggler:focus { box-shadow: none; outline: none; }
+    .navbar-toggler:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+    [data-theme="dark"] .navbar-toggler-icon { filter: invert(1); }
+    [data-theme="light"] .navbar-toggler-icon { filter: none; }
+
+    /* ===== TOMBOL MODE GELAP / TERANG ===== */
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: .9rem;
+    }
+    .theme-toggle:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; border-radius: 999px; }
+    .toggle-track {
+      position: relative;
+      width: 76px;
+      height: 38px;
+      border-radius: 999px;
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 11px;
+      transition: background-color .35s ease;
+      background: #22313f;
+    }
+    [data-theme="light"] .toggle-track { background: #FFE9A8; }
+    .toggle-track svg { width: 16px; height: 16px; position: relative; z-index: 1; transition: opacity .3s ease; }
+    .toggle-track .i-sun { color: #E2B21E; opacity: .45; }
+    .toggle-track .i-moon { color: #E2E11E; opacity: 1; }
+    [data-theme="light"] .toggle-track .i-sun { color: #B26A00; opacity: 1; }
+    [data-theme="light"] .toggle-track .i-moon { color: #6B5B1E; opacity: .45; }
+    .toggle-knob {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--heading);
+      box-shadow: 0 2px 6px var(--shadow);
+      transition: transform .35s cubic-bezier(.6, -0.2, .3, 1.3), background-color .35s ease;
+    }
+    /* Gelap: kenop di kanan (di atas ikon bulan). Terang: kenop di kiri (di atas ikon matahari) */
+    [data-theme="dark"] .toggle-knob { transform: translateX(38px); background: #E2E11E; }
+    [data-theme="light"] .toggle-knob { transform: translateX(0); background: #FFB300; }
+    .toggle-track .i-sun, .toggle-track .i-moon { color: inherit; }
+    [data-theme="dark"] .toggle-track .i-moon { color: #0B1B29; }
+    [data-theme="dark"] .toggle-track .i-sun { color: #E2B21E; opacity: .6; }
+    [data-theme="light"] .toggle-track .i-sun { color: #5a3a00; }
+    [data-theme="light"] .toggle-track .i-moon { color: #6B5B1E; opacity: .5; }
+
+    /* ===== BUTTON ===== */
+    .btn-main { background: var(--green); border: none; color: var(--btn-text); font-weight: 600; padding: .7rem 1.8rem; }
+    .btn-main:hover { background: var(--green); filter: brightness(1.1); color: var(--btn-text); }
+    .btn-line { border: 1px solid var(--text); color: var(--text); padding: .65rem 1.6rem; }
+    .btn-line:hover { background: var(--text); color: var(--bg); }
+    .btn-gold { background: var(--gold); border: none; color: var(--btn-text); font-weight: 600; padding: .7rem 1.8rem; }
+    .btn-gold:hover { background: var(--gold); filter: brightness(1.1); color: var(--btn-text); }
+
+    /* ===== CARD ===== */
+    .card-box {
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      padding: 32px;
+      height: 100%;
+      background: var(--card-bg);
+      transition: background-color .35s ease, border-color .35s ease, transform .25s ease;
+    }
+    .card-box:hover { transform: translateY(-4px); }
+    .card-num { font-family: 'Libre Baskerville', serif; color: var(--gold); font-size: 1.4rem; }
+
+    .news-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      overflow: hidden;
+      height: 100%;
+      box-shadow: 0 .125rem .25rem var(--shadow);
+      transition: background-color .35s ease, border-color .35s ease;
+    }
+    .news-date { color: var(--gold); font-size: .85rem; font-weight: 600; }
+
+    .hours-panel {
+      background: var(--panel-bg);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      padding: 40px;
+      transition: background-color .35s ease;
+    }
+    .hours-row { padding: 10px 0; border-bottom: 1px solid var(--card-border); }
+    .hours-row:last-child { border-bottom: 0; }
+
+    .stat-num { font-family: 'Libre Baskerville', serif; font-size: 2.4rem; }
+
+    /* ===== FORM ===== */
+    .form-control {
+      background: var(--input-bg);
+      color: var(--text);
+      border: 1px solid var(--input-border);
+    }
+    .form-control::placeholder { color: var(--muted); opacity: .8; }
+    .form-control:focus { background: var(--input-bg); color: var(--text); border-color: var(--green); box-shadow: 0 0 0 .2rem rgba(91, 188, 75, .25); }
+
+    /* ===== KARTU KONTAK (WhatsApp / Instagram / Gmail) ===== */
+    .contact-list { display: flex; flex-direction: column; gap: 16px; }
+    .contact-link {
+      --brand: #25D366;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 22px;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      background: var(--card-bg);
+      color: var(--text);
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background-color .35s ease;
+    }
+    .contact-link.wa { --brand: #25D366; }
+    .contact-link.ig { --brand: #E1306C; }
+    .contact-link.gm { --brand: #EA4335; }
+    /* lapisan warna yang menyapu dari kiri saat hover */
+    .contact-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, color-mix(in srgb, var(--brand) 22%, transparent), transparent 85%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .45s ease;
+    }
+    .contact-link:hover, .contact-link:focus-visible {
+      transform: translateX(8px);
+      border-color: var(--brand);
+      box-shadow: 0 10px 28px color-mix(in srgb, var(--brand) 35%, transparent);
+      color: var(--text);
+    }
+    .contact-link:hover::before, .contact-link:focus-visible::before { transform: scaleX(1); }
+    .contact-link:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+
+    .contact-icon {
+      position: relative;
+      flex: 0 0 56px;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.6rem;
+      background: var(--brand);
+      transition: transform .35s cubic-bezier(.5, -0.4, .3, 1.5);
+    }
+    .contact-link.ig .contact-icon { background: linear-gradient(45deg, #F9A03F, #E1306C 55%, #833AB4); }
+    .contact-icon svg { width: 28px; height: 28px; }
+    /* cincin berdenyut di sekitar ikon */
+    .contact-icon::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      border: 2px solid var(--brand);
+      animation: ring 2.4s ease-out infinite;
+    }
+    .contact-link.gm .contact-icon::after { animation-delay: .8s; }
+    .contact-link.ig .contact-icon::after { animation-delay: 1.6s; }
+    @keyframes ring {
+      0% { transform: scale(1); opacity: .7; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    .contact-link:hover .contact-icon { transform: rotate(-10deg) scale(1.12); }
+
+    .contact-text { position: relative; flex: 1; min-width: 0; line-height: 1.25; }
+    .contact-text strong { display: block; font-size: 1.1rem; }
+    .contact-text small { color: var(--muted); word-break: break-word; }
+    .contact-arrow { position: relative; font-size: 1.2rem; opacity: .5; transition: transform .3s ease, opacity .3s ease, color .3s ease; }
+    .contact-link:hover .contact-arrow { transform: translate(4px, -4px); opacity: 1; color: var(--brand); }
+
+    .contact-address { max-width: 480px; }
+
+    @media (max-width: 767.98px) {
+      .contact-list, .contact-address { margin-left: auto; margin-right: auto; }
+      .contact-link { flex-direction: column; gap: 10px; text-align: center; padding: 20px; }
+      .contact-arrow { display: none; }
+      .contact-link:hover, .contact-link:focus-visible { transform: translateY(-4px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .contact-icon::after { animation: none; }
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer { background: var(--footer-bg); color: var(--footer-text); padding: 50px 0 25px; }
+    .site-footer h4, .site-footer h6 { color: var(--text); }
+    .site-footer a { color: var(--footer-link); text-decoration: none; }
+    .site-footer a:hover { color: var(--green); }
+    .footer-line { border-top: 1px solid var(--nav-border); margin-top: 30px; padding-top: 20px; font-size: .85rem; }
+
+    /* ===== HERO ===== */
+    .hero-title { font-size: 2.9rem; max-width: 640px; }
+    .hero-text { max-width: 560px; }
+
+    /* ===== MOBILE (< 768px): semua rata tengah. Tablet & laptop tidak berubah ===== */
+    @media (max-width: 767.98px) {
+      .hero-title { font-size: 2rem; margin-left: auto; margin-right: auto; }
+      .hero-text { margin-left: auto; margin-right: auto; }
+      .sec { padding: 56px 0; }
+      .site-nav .brand-logo { width: 64px; }
+      .stat-num { font-size: 2rem; }
+      .hours-panel { padding: 24px; }
+      .card-box { padding: 26px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="site-nav navbar navbar-expand-lg sticky-top py-3 animate__animated animate__fadeInDown">
+    <div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between gap-3">
+
+      <!-- Logo + nama (tengah di HP, kiri di tablet/laptop) -->
+      <a class="navbar-brand d-flex align-items-center gap-2 m-0 text-center text-md-start" href="#home">
+        <img class="brand-logo" src="Logo rumah buni.png" alt="Logo Rumah Buni">
+        <span>
+          <span class="d-block mb-0 fs-3 fw-bold c-green">Rumah <span class="c-heading">Buni</span></span>
+          <span class="d-block brand-sub">Taman Baca Masyarakat</span>
+        </span>
+      </a>
+
+      <!-- Tombol mode + hamburger: selalu terlihat -->
+      <div class="d-flex align-items-center gap-3 order-lg-3">
+        <button id="themeToggle" class="theme-toggle" type="button" role="switch" aria-checked="true"
+          aria-label="Ganti mode tampilan gelap atau terang">
+          <span class="toggle-track" aria-hidden="true">
+            <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round">
+              <circle cx="12" cy="12" r="4.2" fill="currentColor" />
+              <path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8" />
+            </svg>
+            <svg class="i-moon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21 14.5A9 9 0 0 1 9.5 3a9 9 0 1 0 11.5 11.5z" />
+            </svg>
+            <span class="toggle-knob"></span>
+          </span>
+        </button>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+          aria-label="Buka menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse justify-content-lg-end order-lg-2" id="navMenu">
+        <ul class="navbar-nav gap-lg-4 text-center align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#hours">Jam Buka</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / HOME -->
+  <section id="home" class="sec" style="padding-top:48px;">
+    <div class="container py-5 text-center text-md-start">
+      <h1 class="heading hero-title" data-aos="fade-up">Rumah
+        belajar, tumbuh bersama, dan mulia dalam literasi.</h1>
+      <p class="c-muted hero-text" data-aos="fade-up" data-aos-delay="150">Rumah Buni menyediakan koleksi buku, jurnal,
+        dan ruang belajar yang
+        terbuka untuk pelajar, akademisi, dan masyarakat umum secara gratis.</p>
+      <div class="mt-4 d-flex gap-3 flex-wrap justify-content-center justify-content-md-start" data-aos="fade-up"
+        data-aos-delay="300">
+        <a href="#services" class="btn btn-main">Lihat Layanan</a>
+        <a href="#contact" class="btn btn-line">Daftar Keanggotaan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT STRIP -->
+  <section class="sec sec-alt py-5" style="padding:48px 0;">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="0">
+          <div class="stat-num">1.800+</div>
+          <small>Koleksi Buku</small>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+          <div class="stat-num">3</div>
+          <small>Tahun Melayani</small>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+          <div class="stat-num">8</div>
+          <small>Cabang Wilayah</small>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <div class="stat-num">45.000+</div>
+          <small>Anggota Aktif</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFIL / ABOUT -->
+  <section id="about" class="sec">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200"
+            style="border-radius:4px; width:100%; object-fit:cover; height:420px;" alt="Ruang baca perpustakaan">
+        </div>
+        <div class="col-lg-6 text-center text-md-start" data-aos="fade-left" data-aos-delay="100">
+          <h2 class="mb-3 heading">Sejarah dan Komitmen Kami</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error sunt, aliquam recusandae
+            voluptates qui deserunt maxime quia sequi, ratione ipsa ea consequatur officia totam quidem adipisci
+            accusamus illo cumque. Omnis.</p>
+          <div class="row mt-4">
+            <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="200">
+              <h6 class="mb-1 c-green">Visi</h6>
+              <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nisi ipsum at explicabo
+                possimus? Facilis molestiae sunt eaque debitis vel neque. Dolores aspernatur vero voluptate qui
+                consectetur atque tempora animi!</p>
+            </div>
+            <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="300">
+              <h6 class="mb-1 c-heading">Misi</h6>
+              <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam recusandae dolore eius
+                perferendis inventore minus tempore necessitatibus! Quae voluptatem corporis pariatur, laudantium
+                quibusdam veritatis blanditiis fugit! Consequatur laborum commodi ex.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYANAN -->
+  <section id="services" class="sec sec-alt">
+    <div class="container">
+      <h2 class="mb-5 heading text-center text-md-start" data-aos="fade-up">Layanan Kami</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="card-box text-center text-md-start">
+            <div class="card-num mb-2">01</div>
+            <h5>Peminjaman Buku</h5>
+            <p class="mb-0">Pinjam hingga 5 buku sekaligus dengan masa pinjam 14 hari, dapat diperpanjang secara daring.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-box text-center text-md-start">
+            <div class="card-num mb-2">02</div>
+            <h5>Ruang Baca & Diskusi</h5>
+            <p class="mb-0">Ruang belajar tenang dan ruang diskusi kelompok yang dapat dipesan melalui resepsionis.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-box text-center text-md-start">
+            <div class="card-num mb-2">03</div>
+            <h5>Akses Jurnal Digital</h5>
+            <p class="mb-0">Akses ke database jurnal dan e-book internasional bagi anggota terdaftar.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="card-box text-center text-md-start">
+            <div class="card-num mb-2">04</div>
+            <h5>Program Literasi Anak</h5>
+            <p class="mb-0">Kegiatan mendongeng dan kelas membaca rutin setiap akhir pekan untuk anak-anak.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-box text-center text-md-start">
+            <div class="card-num mb-2">05</div>
+            <h5>Layanan Referensi</h5>
+            <p class="mb-0">Pustakawan siap membantu pencarian referensi untuk kebutuhan riset dan tugas akhir.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-box text-center text-md-start">
+            <div class="card-num mb-2">06</div>
+            <h5>Peminjaman Antar Cabang</h5>
+            <p class="mb-0">Pesan buku dari cabang lain dan ambil di cabang terdekat tanpa biaya tambahan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAM LAYANAN -->
+  <section id="hours" class="sec">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5 text-center text-md-start" data-aos="fade-right">
+          <h2 class="mb-3 heading">Kapan Kami Buka?</h2>
+          <p class="c-heading">Ruang baca utama buka setiap hari kerja dan akhir pekan dengan jam operasional
+            terbatas. Hari libur nasional, layanan tutup.</p>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+          <div class="hours-panel">
+            <div class="d-flex justify-content-between hours-row"><span>Senin – Jumat</span><span>08.00 – 20.00</span>
+            </div>
+            <div class="d-flex justify-content-between hours-row"><span>Sabtu</span><span>09.00 – 17.00</span></div>
+            <div class="d-flex justify-content-between hours-row"><span>Minggu</span><span>09.00 – 15.00</span></div>
+            <div class="d-flex justify-content-between hours-row"><span>Hari Libur Nasional</span><span>Tutup</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BERITA / KEGIATAN -->
+  <section id="news" class="sec sec-alt">
+    <div class="container">
+      <h2 class="mb-5 heading text-center text-md-start" data-aos="fade-up"> <span class="c-green">Kegiatan</span>
+        <span>&</span> Berita</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="news-card">
+            <img src="https://images.unsplash.com/photo-1524578271613-d550eede339f?q=80&w=800"
+              style="width:100%; height:180px; object-fit:cover;" alt="Kelas menulis">
+            <div class="text-center text-md-start" style="padding:22px;">
+              <div class="news-date">12 SEPTEMBER 2026</div>
+              <h6 class="mt-2">Kelas Menulis Kreatif untuk Remaja</h6>
+              <p class="mb-0">Program bulanan bagi remaja untuk mengasah kemampuan menulis fiksi dan non-fiksi.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="news-card">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800"
+              style="width:100%; height:180px; object-fit:cover;" alt="Mendongeng anak">
+            <div class="text-center text-md-start" style="padding:22px;">
+              <div class="news-date">28 AGUSTUS 2026</div>
+              <h6 class="mt-2">Sesi Mendongeng Akhir Pekan</h6>
+              <p class="mb-0">Kegiatan rutin mendongeng untuk anak usia 4-10 tahun setiap Sabtu pagi.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="news-card">
+            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=800"
+              style="width:100%; height:180px; object-fit:cover;" alt="Donasi buku">
+            <div class="text-center text-md-start" style="padding:22px;">
+              <div class="news-date">05 AGUSTUS 2026</div>
+              <h6 class="mt-2">Donasi 3.000 Buku dari Komunitas</h6>
+              <p class="mb-0">Terima kasih kepada seluruh donatur yang membantu memperkaya koleksi kami.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section id="contact" class="sec">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 text-center text-md-start">
+          <h2 class="mb-3 heading" data-aos="fade-up">Kunjungi atau Hubungi Kami</h2>
+          <p class="c-green mb-3" data-aos="fade-up" data-aos-delay="80">Jl. Pendidikan No. 45, Menteng, Jakarta Pusat</p>
+          <p class="mb-0" data-aos="fade-up" data-aos-delay="160">Pilih salah satu kanal di samping, kami balas secepatnya di jam layanan.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="contact-list">
+            <!-- WhatsApp: ganti 6281234567890 dengan nomor Anda (format 62, tanpa 0 & tanpa +) -->
+            <a class="contact-link wa" href="https://wa.me/6281234567890" target="_blank" rel="noopener"
+              data-aos="fade-left" data-aos-delay="100">
+              <span class="contact-icon"><i class="bi bi-whatsapp"></i></span>
+              <span class="contact-text"><strong>WhatsApp</strong><small>Chat langsung dengan pustakawan</small></span>
+            </a>
+
+            <!-- Instagram: ganti rumahbuni dengan username Anda -->
+            <a class="contact-link ig" href="https://instagram.com/rumahbuni" target="_blank" rel="noopener"
+              data-aos="fade-left" data-aos-delay="200">
+              <span class="contact-icon"><i class="bi bi-instagram"></i></span>
+              <span class="contact-text"><strong>Instagram</strong><small>@rumahbuni — kegiatan &amp; info terbaru</small></span>
+            </a>
+
+            <!-- Gmail: membuka jendela tulis email Gmail -->
+            <a class="contact-link gm" href="https://mail.google.com/mail/?view=cm&amp;to=rumahbuni@gmail.com"
+              target="_blank" rel="noopener" data-aos="fade-left" data-aos-delay="300">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M2 6.5v11A1.5 1.5 0 0 0 3.5 19H6V9.9l6 4.5 6-4.5V19h2.5a1.5 1.5 0 0 0 1.5-1.5v-11c0-1.7-1.9-2.6-3.3-1.6L12 10 5.3 4.9C3.9 3.9 2 4.8 2 6.5z" />
+                </svg>
+              </span>
+              <span class="contact-text"><strong>Gmail</strong><small>rumahbuni@gmail.com</small></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 text-center text-md-start" data-aos="fade-up">
+        <div class="col-md-4">
+          <h4 class="font-serif">Perpustakaan Nusantara</h4>
+          <p>Membaca hari ini, membangun masa depan.</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="mb-3">Tautan</h6>
+          <p><a href="#about">Profil</a></p>
+          <p><a href="#services">Layanan</a></p>
+          <p><a href="#hours">Jam Layanan</a></p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="mb-3">Ikuti Kami</h6>
+          <p><a href="#">Instagram</a></p>
+          <p><a href="#">Facebook</a></p>
+        </div>
+      </div>
+      <div class="text-center footer-line">
+        &copy; 2026 Perpustakaan Nusantara. Semua hak dilindungi.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- cdn AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // ===== AOS =====
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 70,
+      disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    });
+
+    // ===== MODE GELAP / TERANG =====
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('themeToggle');
+
+      function apply(theme, save) {
+        root.setAttribute('data-theme', theme);
+        var isDark = theme === 'dark';
+        btn.setAttribute('aria-checked', String(isDark));
+        if (save) {
+          try { localStorage.setItem('rumahbuni-theme', theme); } catch (e) {}
+        }
+      }
+
+      apply(root.getAttribute('data-theme') || 'dark', false);
+
+      btn.addEventListener('click', function () {
+        apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
+      });
+    })();
+  </script>
+</body>
+
+</html>
