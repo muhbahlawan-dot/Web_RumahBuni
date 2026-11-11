@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="dark">
+<html lang="id">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taman Baca Masyarakat Rumah Buni</title>
-  <script>
-    (function () { var t = 'dark'; try { var s = localStorage.getItem('rumahbuni-theme'); if (s === 'light' || s === 'dark') t = s } catch (e) { } document.documentElement.setAttribute('data-theme', t) })();
-  </script>
   <link rel="shortcut icon" href="Logo rumah buni.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,10 +18,8 @@
 
   <header class="nav">
     <div class="wrap">
-      <a class="brand" href="#home">
-        <img src="Logo rumah buni.png" alt="Logo Rumah Buni">
-        <span><b>Rumah <span>Buni</span></b><span>Taman Baca Masyarakat</span></span>
-      </a>
+      <a class="brand" href="#home"><img src="Logo rumah buni.png" alt="Logo Rumah Buni"><span><b>Rumah
+            <span>Buni</span></b><small>Taman Baca Masyarakat</small></span></a>
       <ul class="links" id="links">
         <li><a href="#home">Beranda</a></li>
         <li><a href="#about">Tentang</a></li>
@@ -35,131 +28,148 @@
         <li><a href="#news">Kegiatan</a></li>
         <li><a href="#contact">Kontak</a></li>
       </ul>
-      <div class="tools">
-        <button class="tt" id="themeToggle" role="switch" aria-checked="true" aria-label="Ganti mode gelap atau terang">
-          <i class="bi bi-sun-fill"></i><i class="bi bi-moon-fill"></i>
-        </button>
-        <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false"><i
-            class="bi bi-list"></i></button>
-      </div>
+      <a href="#contact" class="btn btn-sm nav-cta">Daftar Anggota <i class="bi bi-arrow-right"></i></a>
+      <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false"><i
+          class="bi bi-list"></i></button>
     </div>
   </header>
 
   <main>
     <section id="home" class="hero">
-      <div class="blob b1"></div>
-      <div class="blob b2"></div>
-      <div class="glow" id="glow"></div>
-      <div style="margin-top: 20px;" class="wrap">
-        <h1>Rumah belajar, tumbuh bersama, dan mulia dalam literasi.</h1>
-        <p data-aos="fade-up" data-aos-delay="100">Rumah Buni menyediakan koleksi buku, jurnal, dan ruang belajar yang
-          terbuka untuk pelajar, akademisi, dan masyarakat umum secara gratis.</p>
-        <div class="hero-cta" data-aos="fade-up" data-aos-delay="200">
-          <a href="#services" class="btn btn-main">Lihat layanan</a>
-          <a href="#contact" class="btn btn-line">Daftar keanggotaan</a>
+      <div class="wrap">
+        <div>
+          <div class="eyebrow">Baca. Tumbuh. Bersama.</div>
+          <h1>Rumah belajar, tumbuh bersama, dan mulia dalam literasi.</h1>
+          <p>Rumah Buni menyediakan koleksi buku, jurnal, dan ruang belajar yang terbuka untuk pelajar, akademisi, dan
+            masyarakat umum secara gratis.</p>
+          <div class="hero-cta">
+            <a href="#services" class="btn btn-main">Lihat layanan <i class="bi bi-arrow-right"></i></a>
+            <a href="#contact" class="btn">Daftar keanggotaan</a>
+          </div>
+          <div class="status" id="status"><span class="dot"></span><span id="statusText">Mengecek jam buka…</span></div>
         </div>
-        <div class="status" id="status" data-aos="fade-up" data-aos-delay="300"><span class="dot"></span><span
-            id="statusText">Mengecek jam buka…</span></div>
+        <div class="glass dash">
+          <div class="dash-top">
+            <div><small>Kunjungan pembaca</small>
+              <div class="big">12.480</div>
+              <div class="up"><i class="bi bi-arrow-up"></i> 12,4%</div><small>dibanding kuartal lalu</small>
+            </div>
+            <span class="pill">12 bulan terakhir</span>
+          </div>
+          <svg class="chart" viewBox="0 0 400 110" aria-label="Grafik kunjungan naik sepanjang tahun">
+            <path class="ln" pathLength="1"
+              d="M5 95 C40 98 60 90 90 82 S130 70 160 74 S200 60 230 48 S270 50 300 40 S350 28 395 12" />
+            <circle cx="395" cy="12" r="5" fill="#fff" />
+          </svg>
+          <div class="months">
+            <span>Jan</span><span>Mar</span><span>Mei</span><span>Jul</span><span>Sep</span><span>Nov</span></div>
+          <div class="mini">
+            <div><i class="bi bi-book"></i><small>Koleksi buku</small><b>1.800+</b></div>
+            <div><i class="bi bi-people"></i><small>Anggota aktif</small><b>45.000+</b></div>
+            <div><i class="bi bi-geo-alt"></i><small>Cabang wilayah</small><b>8</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="eyebrow">Layanan kami</div>
+            <h2>Layanan literasi untuk <em>setiap usia.</em></h2>
+          </div>
+          <p>Pilih kategori untuk menyaring layanan. Klik kartu untuk melihat detailnya.</p>
+        </div>
+        <div class="chips" id="chips">
+          <button class="chip on" data-f="all">Semua</button><button class="chip" data-f="baca">Membaca</button>
+          <button class="chip" data-f="anak">Anak</button><button class="chip" data-f="riset">Riset</button>
+        </div>
+        <div class="grid" id="grid">
+          <article class="glass card" data-c="baca"><i class="ic bi bi-book"></i>
+            <h3>Peminjaman buku</h3>
+            <p>Pinjam hingga 5 buku sekaligus dengan masa pinjam 14 hari, dapat diperpanjang secara daring.</p>
+            <div class="more">Bawa kartu anggota ke meja layanan.</div><button class="go" aria-label="Selengkapnya"><i
+                class="bi bi-arrow-right"></i></button>
+          </article>
+          <article class="glass card" data-c="baca"><i class="ic bi bi-people"></i>
+            <h3>Ruang baca &amp; diskusi</h3>
+            <p>Ruang belajar tenang dan ruang diskusi kelompok yang dapat dipesan melalui resepsionis.</p>
+            <div class="more">Pemesanan ruang diskusi minimal sehari sebelumnya.</div><button class="go"
+              aria-label="Selengkapnya"><i class="bi bi-arrow-right"></i></button>
+          </article>
+          <article class="glass card" data-c="riset"><i class="ic bi bi-laptop"></i>
+            <h3>Akses jurnal digital</h3>
+            <p>Akses ke database jurnal dan e-book internasional bagi anggota terdaftar.</p>
+            <div class="more">Akun dibuat otomatis setelah pendaftaran anggota.</div><button class="go"
+              aria-label="Selengkapnya"><i class="bi bi-arrow-right"></i></button>
+          </article>
+          <article class="glass card" data-c="anak"><i class="ic bi bi-stars"></i>
+            <h3>Program literasi anak</h3>
+            <p>Kegiatan mendongeng dan kelas membaca rutin setiap akhir pekan untuk anak-anak.</p>
+            <div class="more">Gratis, untuk anak usia 4–10 tahun.</div><button class="go" aria-label="Selengkapnya"><i
+                class="bi bi-arrow-right"></i></button>
+          </article>
+          <article class="glass card" data-c="riset"><i class="ic bi bi-search"></i>
+            <h3>Layanan referensi</h3>
+            <p>Pustakawan siap membantu pencarian referensi untuk kebutuhan riset dan tugas akhir.</p>
+            <div class="more">Tanya langsung ke pustakawan atau lewat WhatsApp.</div><button class="go"
+              aria-label="Selengkapnya"><i class="bi bi-arrow-right"></i></button>
+          </article>
+          <article class="glass card" data-c="baca"><i class="ic bi bi-arrow-left-right"></i>
+            <h3>Peminjaman antar cabang</h3>
+            <p>Pesan buku dari cabang lain dan ambil di cabang terdekat tanpa biaya tambahan.</p>
+            <div class="more">Buku biasanya siap diambil dalam 2–3 hari.</div><button class="go"
+              aria-label="Selengkapnya"><i class="bi bi-arrow-right"></i></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="glass banner"
+          style="--img:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1400')">
+          <div>
+            <div class="eyebrow">Tentang kami</div>
+            <h2>Sejarah dan <em>komitmen kami.</em></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error sunt, aliquam recusandae voluptates qui
+              deserunt maxime quia sequi, ratione ipsa ea consequatur officia totam quidem adipisci accusamus illo
+              cumque.</p>
+            <div class="tabs" role="tablist">
+              <button class="tab" role="tab" aria-selected="true" data-tab="visi">Visi</button>
+              <button class="tab" role="tab" aria-selected="false" data-tab="misi">Misi</button>
+            </div>
+            <p class="tabpanel" id="visi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nisi ipsum at
+              explicabo possimus? Facilis molestiae sunt eaque debitis vel neque.</p>
+            <p class="tabpanel" id="misi" hidden>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+              recusandae dolore eius perferendis inventore minus tempore necessitatibus!</p>
+          </div>
+          <div class="quote"><i class="bi bi-quote"></i>
+            <p>Membaca hari ini, membangun masa depan.</p><small>— Rumah Buni</small>
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="stats">
-      <div class="wrap">
-        <div class="stat" data-aos="zoom-in" data-aos-delay="0"><b data-count="1800" data-suffix="+">0</b><span>Koleksi
-            buku</span></div>
-        <div class="stat" data-aos="zoom-in" data-aos-delay="100"><b data-count="3">0</b><span>Tahun melayani</span>
-        </div>
-        <div class="stat" data-aos="zoom-in" data-aos-delay="200"><b data-count="8">0</b><span>Cabang wilayah</span>
-        </div>
-        <div class="stat" data-aos="zoom-in" data-aos-delay="300"><b data-count="45000"
-            data-suffix="+">0</b><span>Anggota aktif</span></div>
+      <div class="wrap glass">
+        <div class="stat"><b data-count="1800" data-suffix="+">0</b><span>Koleksi buku</span></div>
+        <div class="stat"><b data-count="3">0</b><span>Tahun melayani</span></div>
+        <div class="stat"><b data-count="8">0</b><span>Cabang wilayah</span></div>
+        <div class="stat"><b data-count="45000" data-suffix="+">0</b><span>Anggota aktif</span></div>
       </div>
     </div>
 
-    <section id="about">
-      <div class="wrap about">
-        <div class="imgwrap" data-aos="fade-right" data-aos-duration="1000"><img id="pimg"
-            src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200" alt="Ruang baca perpustakaan"
-            loading="lazy"></div>
-        <div data-aos="fade-left" data-aos-delay="100">
-          <h2 class="sec-title">Sejarah dan komitmen kami</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error sunt, aliquam recusandae voluptates qui
-            deserunt maxime quia sequi, ratione ipsa ea consequatur officia totam quidem adipisci accusamus illo cumque.
-          </p>
-          <div class="tabs" role="tablist">
-            <button class="tab" role="tab" aria-selected="true" data-tab="visi">Visi</button>
-            <button class="tab" role="tab" aria-selected="false" data-tab="misi">Misi</button>
-          </div>
-          <p class="tabpanel" id="visi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nisi ipsum at
-            explicabo possimus? Facilis molestiae sunt eaque debitis vel neque.</p>
-          <p class="tabpanel" id="misi" hidden>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam recusandae
-            dolore eius perferendis inventore minus tempore necessitatibus!</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" class="alt">
-      <div class="wrap">
-        <h2 class="sec-title" data-aos="fade-up">Layanan kami</h2>
-        <p class="sec-sub" data-aos="fade-up">Pilih kategori untuk menyaring layanan. Klik kartu untuk melihat
-          detailnya.</p>
-        <div class="chips" id="chips" data-aos="fade-up">
-          <button class="chip on" data-f="all">Semua</button>
-          <button class="chip" data-f="baca">Membaca</button>
-          <button class="chip" data-f="anak">Anak</button>
-          <button class="chip" data-f="riset">Riset</button>
-        </div>
-        <div class="grid" id="grid">
-          <article class="card" data-c="baca" data-aos="zoom-in-up"><i class="ic bi bi-book"></i>
-            <h3>Peminjaman buku</h3>
-            <p>Pinjam hingga 5 buku sekaligus dengan masa pinjam 14 hari, dapat diperpanjang secara daring.</p>
-            <div class="more">Bawa kartu anggota ke meja layanan.</div>
-            <button style="background-color: #5BBC4B; padding: 3px; margin-top: 10px; border-radius: 10px;" class="button btn">Selengkapnya</button>
-          </article>
-          <article class="card" data-c="baca" data-aos="zoom-in-up" data-aos-delay="80"><i class="ic bi bi-people"></i>
-            <h3>Ruang baca &amp; diskusi</h3>
-            <p>Ruang belajar tenang dan ruang diskusi kelompok yang dapat dipesan melalui resepsionis.</p>
-            <div class="more">Pemesanan ruang diskusi minimal sehari sebelumnya.</div>
-             <button style="background-color: #5BBC4B; padding: 3px; margin-top: 10px; border-radius: 10px;" class="button btn">Selengkapnya</button>
-          </article>
-          <article class="card" data-c="riset" data-aos="zoom-in-up" data-aos-delay="160"><i
-              class="ic bi bi-laptop"></i>
-            <h3>Akses jurnal digital</h3>
-            <p>Akses ke database jurnal dan e-book internasional bagi anggota terdaftar.</p>
-            <div class="more">Akun dibuat otomatis setelah pendaftaran anggota.</div>
-             <button style="background-color: #5BBC4B; padding: 3px; margin-top: 10px; border-radius: 10px;" class="button btn">Selengkapnya</button>
-          </article>
-          <article class="card" data-c="anak" data-aos="zoom-in-up"><i class="ic bi bi-stars"></i>
-            <h3>Program literasi anak</h3>
-            <p>Kegiatan mendongeng dan kelas membaca rutin setiap akhir pekan untuk anak-anak.</p>
-            <div class="more">Gratis, untuk anak usia 4–10 tahun.</div>
-             <button style="background-color: #5BBC4B; padding: 3px; margin-top: 10px; border-radius: 10px;" class="button btn">Selengkapnya</button>
-          </article>
-          <article class="card" data-c="riset" data-aos="zoom-in-up" data-aos-delay="80"><i class="ic bi bi-search"></i>
-            <h3>Layanan referensi</h3>
-            <p>Pustakawan siap membantu pencarian referensi untuk kebutuhan riset dan tugas akhir.</p>
-            <div class="more">Tanya langsung ke pustakawan atau lewat WhatsApp.</div>
-             <button style="background-color: #5BBC4B; padding: 3px; margin-top: 10px; border-radius: 10px;" class="button btn">Selengkapnya</button>
-          </article>
-          <article class="card" data-c="baca" data-aos="zoom-in-up" data-aos-delay="160"><i
-              class="ic bi bi-arrow-left-right"></i>
-            <h3>Peminjaman antar cabang</h3>
-            <p>Pesan buku dari cabang lain dan ambil di cabang terdekat tanpa biaya tambahan.</p>
-            <div class="more">Buku biasanya siap diambil dalam 2–3 hari.</div>
-             <button style="background-color: #5BBC4B; padding: 3px; margin-top: 10px; border-radius: 10px;" class="button btn">Selengkapnya</button>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="hours">
       <div class="wrap hours">
-        <div data-aos="fade-right">
-          <h2 class="sec-title">Kapan kami buka?</h2>
-          <p class="sec-sub" style="margin:0;color:var(--heading)">Ruang baca utama buka setiap hari dengan jam
-            operasional terbatas. Hari libur nasional, layanan tutup.</p>
+        <div>
+          <div class="eyebrow">Jam buka</div>
+          <h2>Kapan kami <em>buka?</em></h2>
+          <p style="margin-top:12px">Ruang baca utama buka setiap hari dengan jam operasional terbatas. Hari libur
+            nasional, layanan tutup.</p>
         </div>
-        <div class="hours-panel" id="hoursPanel" data-aos="fade-left" data-aos-delay="100">
+        <div class="glass hours-panel" id="hoursPanel">
           <div class="row" data-days="1,2,3,4,5"><span>Senin – Jumat</span><span>08.00 – 20.00</span></div>
           <div class="row" data-days="6"><span>Sabtu</span><span>09.00 – 17.00</span></div>
           <div class="row" data-days="0"><span>Minggu</span><span>09.00 – 15.00</span></div>
@@ -168,29 +178,33 @@
       </div>
     </section>
 
-    <section id="news" class="alt">
+    <section id="news">
       <div class="wrap">
-        <h2 class="sec-title" data-aos="fade-up">Kegiatan &amp; berita</h2>
-        <div class="grid" style="margin-top:28px">
-          <article class="news-card" data-aos="zoom-in-up">
-            <div class="img"><img src="foto kelas mebuat slime.png"
-                alt="Kelas membuat slime" loading="lazy"></div>
+        <div class="head">
+          <div>
+            <div class="eyebrow">Kegiatan &amp; berita</div>
+            <h2>Apa yang sedang <em>berlangsung.</em></h2>
+          </div>
+        </div>
+        <div class="grid">
+          <article class="glass news-card">
+            <div class="img"><img src="foto kelas mebuat slime.png" alt="Kelas membuat slime" loading="lazy"></div>
             <div class="news-body">
               <div class="news-date">Maret 2024</div>
               <h3>Kelas membuat slime</h3>
-              <p>Anak-anak belajar menyelaraskan apa yang mereka lihat dengan gerakan tangan saat mencampur bahan-bahan agar menjadi tekstur yang pas.</p>
+              <p>Anak-anak belajar menyelaraskan apa yang mereka lihat dengan gerakan tangan saat mencampur bahan-bahan
+                agar menjadi tekstur yang pas.</p>
             </div>
           </article>
-          <article class="news-card" data-aos="zoom-in-up" data-aos-delay="80">
-            <div class="img"><img src="foto mendongeng.png"
-                alt="Mendongeng anak" loading="lazy"></div>
+          <article class="glass news-card">
+            <div class="img"><img src="foto mendongeng.png" alt="Mendongeng anak" loading="lazy"></div>
             <div class="news-body">
               <div class="news-date">28 Agustus 2026</div>
               <h3>Mendongeng</h3>
               <p>Kegiatan rutin mendongeng untuk anak usia 4–10 tahun setiap Sabtu pagi.</p>
             </div>
           </article>
-          <article class="news-card" data-aos="zoom-in-up" data-aos-delay="160">
+          <article class="glass news-card">
             <div class="img"><img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=800"
                 alt="Donasi buku" loading="lazy"></div>
             <div class="news-body">
@@ -204,33 +218,22 @@
     </section>
 
     <section id="contact">
-      <div class="wrap contact">
-        <div data-aos="fade-right">
-          <h2 class="sec-title">Kunjungi atau Hubungi Kami</h2>
-          <p class="addr"><i class="bi bi-geo-alt-fill"></i>Jl. Ujong Beurasok, Lapang, Kec. Johan Pahlawan, Kabupaten Aceh Barat, Aceh 23618</p>
-          <p style="color:var(--muted)">Pilih salah satu kanal di samping, kami balas secepatnya di jam layanan.</p>
+      <div class="wrap glass contact">
+        <div>
+          <div class="eyebrow">Kontak</div>
+          <h2>Kunjungi atau <em>hubungi kami.</em></h2>
+          <p class="addr"><i class="bi bi-geo-alt-fill"></i>Jl. Ujong Beurasok, Lapang, Kec. Johan Pahlawan, Kabupaten
+            Aceh Barat, Aceh 23618</p>
+          <p class="s">Pilih salah satu kanal di samping, kami balas secepatnya di jam layanan.</p>
         </div>
         <div class="contact-list">
-          <a class="contact-link wa" href="https://wa.me/628116725966" target="_blank" rel="noopener"
-            data-aos="fade-left" data-aos-delay="100">
-            <span class="contact-icon"><i class="bi bi-whatsapp"></i></span>
-            <span class="contact-text"><strong>WhatsApp</strong></span>
-          </a>
-          <a class="contact-link ig" href="https://www.instagram.com/rumah_buni/" target="_blank" rel="noopener"
-            data-aos="fade-left" data-aos-delay="200">
-            <span class="contact-icon"><i class="bi bi-instagram"></i></span>
-            <span class="contact-text"><strong>Instagram</strong></span>
-          </a>
-          <a class="contact-link gm" href="https://mail.google.com/mail/?view=cm&amp;to=rumahbuni@gmail.com"
-            target="_blank" rel="noopener" data-aos="fade-left" data-aos-delay="300">
-            <span class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M2 6.5v11A1.5 1.5 0 0 0 3.5 19H6V9.9l6 4.5 6-4.5V19h2.5a1.5 1.5 0 0 0 1.5-1.5v-11c0-1.7-1.9-2.6-3.3-1.6L12 10 5.3 4.9C3.9 3.9 2 4.8 2 6.5z" />
-              </svg>
-            </span>
-            <span class="contact-text"><strong>Gmail</strong></span>
-          </a>
+          <a class="contact-link" href="https://wa.me/628116725966" target="_blank" rel="noopener"><span
+              class="contact-icon"><i class="bi bi-whatsapp"></i></span><strong>WhatsApp</strong></a>
+          <a class="contact-link" href="https://www.instagram.com/rumah_buni/" target="_blank" rel="noopener"><span
+              class="contact-icon"><i class="bi bi-instagram"></i></span><strong>Instagram</strong></a>
+          <a class="contact-link" href="https://mail.google.com/mail/?view=cm&amp;to=rumahbuni@gmail.com"
+            target="_blank" rel="noopener"><span class="contact-icon"><i
+                class="bi bi-envelope-fill"></i></span><strong>Gmail</strong></a>
         </div>
       </div>
     </section>
@@ -246,47 +249,29 @@
       <div class="copy">&copy; 2026 Taman Baca Masyarakat Rumah Buni. Semua hak dilindungi.</div>
     </div>
   </footer>
-
   <button id="top" aria-label="Kembali ke atas"><i class="bi bi-arrow-up"></i></button>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     (function () {
       var $ = function (s, c) { return (c || document).querySelector(s) }, $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)) };
       var root = document.documentElement;
 
-      /* tema */
-      var tt = $('#themeToggle');
-      function setTheme(t, save) { root.setAttribute('data-theme', t); tt.setAttribute('aria-checked', String(t === 'dark')); if (save) { try { localStorage.setItem('rumahbuni-theme', t) } catch (e) { } } }
-      setTheme(root.getAttribute('data-theme'), false);
-      tt.onclick = function () { setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true) };
-
-      /* judul hero muncul kata per kata */
       var h1 = $('.hero h1');
       h1.innerHTML = h1.textContent.trim().split(/\s+/).map(function (w, i) { return '<span class="w" style="--i:' + i + '">' + w + '</span>' }).join(' ');
 
-      /* AOS */
-      AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 70, disable: matchMedia('(prefers-reduced-motion: reduce)').matches });
-      document.addEventListener('aos:in', function (e) { var el = e.detail; setTimeout(function () { el.classList.add('settled') }, 1400) });
-
-      /* menu mobile */
       var links = $('#links'), burger = $('#burger');
       burger.onclick = function () { var o = links.classList.toggle('open'); burger.setAttribute('aria-expanded', o) };
       $$('a', links).forEach(function (a) { a.onclick = function () { links.classList.remove('open'); burger.setAttribute('aria-expanded', false) } });
 
-      /* scroll: progress, tombol atas */
-      var bar = $('#progress'), top = $('#top');
-      var navEl = $('.nav'), pimg = $('#pimg'), lastY = 0;
+      var bar = $('#progress'), top = $('#top'), navEl = $('.nav'), lastY = 0;
       function onScroll() {
         var y = scrollY, h = root.scrollHeight - innerHeight;
         bar.style.width = (h > 0 ? y / h * 100 : 0) + '%'; top.classList.toggle('show', y > 600);
         navEl.classList.toggle('hide', y > 200 && y > lastY && !links.classList.contains('open')); lastY = y;
-        if (pimg && !matchMedia('(prefers-reduced-motion: reduce)').matches) { var r = pimg.parentNode.getBoundingClientRect(); pimg.style.transform = 'translateY(' + ((r.top + r.height / 2 - innerHeight / 2) * -.07).toFixed(1) + 'px)' }
       }
       addEventListener('scroll', onScroll, { passive: true }); onScroll();
       top.onclick = function () { scrollTo({ top: 0, behavior: 'smooth' }) };
 
-      /* hitung angka */
       function count(el) {
         var to = +el.dataset.count, suf = el.dataset.suffix || '', t0 = null;
         (function step(t) {
@@ -297,16 +282,10 @@
       var io2 = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { count(e.target); io2.unobserve(e.target) } }) }, { threshold: .6 });
       $$('[data-count]').forEach(function (el) { io2.observe(el) });
 
-      /* menu aktif sesuai posisi scroll */
-      var secs = $$('main section[id]'), navA = $$('a', links);
+      var navA = $$('a', links);
       var io3 = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { navA.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id) }) } }) }, { rootMargin: '-45% 0px -50% 0px' });
-      secs.forEach(function (s) { io3.observe(s) });
+      $$('main section[id]').forEach(function (s) { io3.observe(s) });
 
-      /* cahaya hero mengikuti kursor */
-      var hero = $('.hero'), glow = $('#glow');
-      hero.addEventListener('pointermove', function (e) { var r = hero.getBoundingClientRect(); glow.style.left = (e.clientX - r.left) + 'px'; glow.style.top = (e.clientY - r.top) + 'px' });
-
-      /* tab visi / misi */
       $$('.tab').forEach(function (t) {
         t.onclick = function () {
           $$('.tab').forEach(function (x) { x.setAttribute('aria-selected', x === t) });
@@ -314,19 +293,14 @@
         }
       });
 
-      /* filter & detail layanan */
       $$('.chip').forEach(function (c) {
         c.onclick = function () {
           $$('.chip').forEach(function (x) { x.classList.toggle('on', x === c) });
           $$('#grid .card').forEach(function (card) { card.classList.toggle('hide', c.dataset.f !== 'all' && card.dataset.c !== c.dataset.f) });
         }
       });
-      $$('#grid .card').forEach(function (card) {
-        card.onclick = function () { card.classList.toggle('open') };
-        card.addEventListener('pointermove', function (e) { var r = card.getBoundingClientRect(); card.style.setProperty('--mx', (e.clientX - r.left) + 'px'); card.style.setProperty('--my', (e.clientY - r.top) + 'px') });
-      });
+      $$('#grid .card').forEach(function (card) { card.onclick = function () { card.classList.toggle('open') } });
 
-      /* jam buka (WIB) */
       var sched = { 1: [8, 20], 2: [8, 20], 3: [8, 20], 4: [8, 20], 5: [8, 20], 6: [9, 17], 0: [9, 15] };
       function jakarta() {
         var p = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Jakarta', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date()), o = {};
@@ -335,14 +309,12 @@
       }
       function pad(n) { return String(n).padStart(2, '0') + '.00' }
       function updateStatus() {
-        var n = jakarta(), s = sched[n.d], st = $('#status'), tx = $('#statusText');
-        var open = n.h >= s[0] && n.h < s[1];
+        var n = jakarta(), s = sched[n.d], st = $('#status'), tx = $('#statusText'), open = n.h >= s[0] && n.h < s[1];
         st.className = 'status ' + (open ? 'open' : 'closed');
         tx.textContent = open ? 'Buka sekarang, tutup pukul ' + pad(s[1]) + ' WIB' : 'Tutup sekarang. Buka lagi sesuai jadwal di bawah.';
         $$('#hoursPanel .row').forEach(function (r) { var d = r.dataset.days; r.classList.toggle('today', !!d && d.split(',').indexOf(String(n.d)) > -1) });
       }
       updateStatus(); setInterval(updateStatus, 60000);
-
     })();
   </script>
 </body>
